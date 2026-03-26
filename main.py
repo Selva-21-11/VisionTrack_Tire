@@ -21,7 +21,7 @@ out = cv2.VideoWriter(
     (width, height)
 )
 
-# 🔥 Kalman Filter
+#Kalman Filter
 kalman = cv2.KalmanFilter(4, 2)
 
 kalman.measurementMatrix = np.array([[1,0,0,0],
@@ -45,13 +45,13 @@ while True:
 
     frame_count += 1
 
-    # 🔥 Dynamic confidence (important)
+    # Dynamic confidence
     if frame_count < 50:
         conf_threshold = 0.2   # early frames → easier detection
     else:
         conf_threshold = 0.4   # later → stable detection
 
-    # 🔥 Force detection at start + periodic correction
+    # Force detection at start + periodic correction
     if frame_count < 50 or not tracking or frame_count % 10 == 0:
 
         results = model(frame, imgsz=960)[0]
@@ -73,7 +73,7 @@ while True:
                 kalman.statePre = np.array([[cx],[cy],[0],[0]], np.float32)
                 break
 
-    # 🔥 Tracking + Kalman smoothing
+    # Tracking + Kalman smoothing
     if tracking and tracker is not None:
         success, bbox = tracker.update(frame)
 
@@ -102,7 +102,7 @@ while True:
                         0.6, (0,255,0), 2)
 
         else:
-            # 🔥 DO NOT immediately reset → allow recovery
+            # DO NOT immediately reset → allow recovery
             tracking = False
             tracker = None
 
@@ -116,4 +116,4 @@ cap.release()
 out.release()
 cv2.destroyAllWindows()
 
-print("✅ output_FINAL.mp4 saved")
+print("Video saved")
