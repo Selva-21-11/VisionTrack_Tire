@@ -1,0 +1,26 @@
+# Virtual Environment
+myvenv/
+
+# Video files
+*.mp4
+
+# Frames folder
+frames/
+
+# ZIP archives
+*.zip
+
+# Model weights
+*.pt
+
+# YOLO run outputs
+runs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db

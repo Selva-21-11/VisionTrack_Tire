@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 1
+names: ['Tire']
+
+roboflow:
+  workspace: selva-ranjan-s-workspace
+  project: tire-detection-k2b74
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/selva-ranjan-s-workspace/tire-detection-k2b74/dataset/2
